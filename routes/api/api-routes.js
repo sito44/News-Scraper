@@ -3,6 +3,6 @@ const router = express.Router();
 
 const headline = require('../../controllers/headline');
 
-router.get('/', headline.initialScrape);
+router.get('/api/initial-scrape', headline.scrapeNews);
 
 module.exports = router;

@@ -1,0 +1,7 @@
+small {
+    display: block;
+}
+.jumbotron {
+    background-image: url('../images/natureLeafFlippedHighRes.jpg');
+    background-size: cover ;
+}
