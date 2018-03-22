@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars');
 const db = require('./models');
 const PORT = 3030;
 const apiRoutes = require('./routes/api/api-routes.js');
-/*const htmlRoutes = require('./routes/view/html-routes.js'); */
+const htmlRoutes = require('./routes/view/html-routes.js');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -22,7 +22,7 @@ app.set('view engine', 'handlebars');
 
 
 app.use(apiRoutes);
-/*app.use(htmlRoutes); */
+app.use(htmlRoutes);
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.Promise = Promise;
