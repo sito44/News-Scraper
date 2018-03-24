@@ -5,3 +5,8 @@ small {
     background-image: url('../images/natureLeafFlippedHighRes.jpg');
     background-size: cover ;
 }
+.card {
+    margin-left: 2.5%;
+    margin-bottom: 2%;
+    
+}
