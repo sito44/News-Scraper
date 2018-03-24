@@ -15,7 +15,8 @@ const headlineSchema = new Schema({
 
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     author: {
@@ -123,11 +124,11 @@ headlineSchema.statics.dbQuerySavedNotes = function (callback) {
 }
 
 headlineSchema.statics.saveArticle = function (articleId, callback) {
-    Headline.findByIdAndUpdate(articleId, { saved: true }, callback)
+    Headline.findByIdAndUpdate(articleId, { saved: true }, callback);
 }
 
 headlineSchema.statics.deleteArticle = function (articleId, callback) {
-    Headline.findByIdAndUpdate(articleId, { saved: false }, callback)
+    Headline.findByIdAndUpdate(articleId, { saved: false }, callback);
 }
 /* headlineSchema.statics.dbQuerySavedNotes = function (callback) {
     Headline.find({ saved: true })
