@@ -12,7 +12,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Saved Articles</a>
+                <a class="nav-link" href="/saved-articles">Saved Articles</a>
             </li>
         
         </ul>
@@ -28,7 +28,7 @@
 
 
 {{#each newsData}}
-
+<a href="{{this.link}}" target="_blank">
 <div class="card d-inline-block" style="width: 18rem;">
     <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
     <div class="card-body">
@@ -36,8 +36,8 @@
         <time>{{this.date}}</time>
         <small>Author: {{this.author}}</small>
         <p class="card-text">{{this.description}}</p>
-        <a href="{{this.link}}" class="btn btn-primary">Article</a>
+        <a href="#" class="btn btn-primary saveButton" data-acticle-id="{{this._id}}">Save Article</a>
     </div>
 </div>
-
+</a>
 {{/each}}

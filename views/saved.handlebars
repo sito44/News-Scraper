@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Saved Articles</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Saved Articles</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Mongo Scraper</h1>
+        <p class="lead">Natural News Edition</p>
+    </div>
+</div>
+
+
+{{#each newsData}}
+
+    <a href="{{this.link}}" target="_blank">
+        <div class="card d-inline-block" style="width: 18rem;">
+            <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <time>{{this.date}}</time>
+                <small>Author: {{this.author}}</small>
+                <p class="card-text">{{this.description}}</p>
+                <a href="#" class="btn btn-primary deleteButton" data-acticle-id="{{this._id}}">Delete Article</a>
+                <a href="#" class="btn btn-primary" data-modal-trigger="main">Add Note</a>
+            </div>
+        </div>
+    </a>
+
+{{/each}}
+
+<div data-modal-content="main">
+    <p>HELLO WORLD</p>
+</div>

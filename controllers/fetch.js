@@ -7,3 +7,13 @@ exports.renderHeadlines = function (req, res) {
     });
 });
 };
+
+exports.renderSavedHeadlines = function (req, res) {
+    HeadlineModel.schema.statics.dbQuerySavedNotes(function (response, err) {
+        if (err) { console.log(err) }
+
+        res.render('saved', {
+            newsData: response
+        });
+    });
+};
