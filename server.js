@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 const exphbs = require('express-handlebars');
 
 const db = require('./models');
-const PORT = 3030;
+const PORT = process.env.PORT || 3030;
 const apiRoutes = require('./routes/api/api-routes.js');
 const htmlRoutes = require('./routes/view/html-routes.js');
 
