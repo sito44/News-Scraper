@@ -84,15 +84,15 @@ headlineSchema.statics.scrape = function (callback) {
 
                 initialScrapeArray.push(articleData);
 
-                Headline.create(articleData, function (err, inserted) {
-                    if (err) {
+                // Headline.create(articleData, function (err, inserted) {
+                //     if (err) {
 
-                        console.log(err);
-                    } else {
+                //         console.log(err);
+                //     } else {
 
-                        console.log(inserted + 'HERE --------------------*************');
-                    }
-                });
+                //         console.log(inserted + 'HERE --------------------*************');
+                //     }
+                // });
             }
         });
         callback(initialScrapeArray);
