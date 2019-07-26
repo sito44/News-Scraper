@@ -19,14 +19,101 @@
     
     <script type="text/javascript" src="scripts/utils.js"></script>
     <title>Scrape The News</title>
+
+    <style>
+       body {
+        position: relative;
+       box-sizing:border-box ;
+       margin:0 0 0 0;
+       background-color:black;
+       color:lime;
+       font-family:monospace;
+       
+       }
+
+       h3{
+       z-index:2;
+       position:absolute ;
+       bottom:0.5em;
+       
+       }
+       div {
+        width:60vw;
+        padding: 2rem 0 2rem 0;
+        background-color: black;
+        margin: 0 auto;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        right:50%;
+        transform: translate(50%, -50%);
+        border: 2px solid lime;
+        box-shadow: 0 2px 18px lime;
+        opacity: 0.8;
+       }
+       div > h1 {
+           font-size: 1.8rem;
+       }
+    </style>
 </head>
 
-<body>
-    <main>
-        {{{ body }}}
-    </main>
+<body onload="init();spawndrop();" onclick="restart();">
+    <canvas id="canvas"></canvas>
+    <div>
+        <h1>Under Maintenance</h1>
+    </div>
+    <h3>sito44</h3>
+    <script>
+        let { random, floor, ceil, round } = Math;
+        let canvas, ctx, W, H;
+        let drops = [];
+        const columns = 120;
+        let fontSize = 26;
+        let intervalA;
+        class Drop {
+            constructor() {
+                this.column = floor(random() * columns);
+                this.row = 0;
+            }
+            draw() {
+                ctx.fillStyle = "cyan";
+                ctx.fillText(String.fromCharCode(floor(random() * 208 + 48)), this.column * cellSize, this.row * cellSize);
+            }
+        }
+        function init() {
+            canvas = document.getElementById("canvas");
+            canvas.width = W = window.innerWidth;
+            canvas.height = H = window.innerHeight;
+            ctx = canvas.getContext("2d");
+            cellSize = W / columns;
+            ctx.font = `bolder ${cellSize}px monospace`;
+            drops.length = 0;
+            intervalA = setInterval(animate, 100);
+        }
+        function animate() {
+            ctx.fillStyle = "rgba(0,0,0,0.2)";
+            ctx.fillRect(0, 0, W, H);
+            for (let i = drops.length - 1; i >= 0; i--) {
+                drops[i].draw();
+                drops[i].row++;
+                if (drops[i].row > 80) drops.splice(i, 1);
+            }
+        }
+        function spawndrop() {
+            drops.push(new Drop());
+            setTimeout(spawndrop, 0 + random() * 30);
+        }
 
-    <script src="scripts/modal.js"></script>
+        function restart() {
+            clearInterval(intervalA);
+            drops.length = 0;
+            ctx.fillStyle = "rgba(0,0,0,1)";
+            ctx.fillRect(0, 0, W, H);
+            init();
+        }
+
+    </script>
 </body>
 
 </html>
+    {{!-- <script src="scripts/modal.js"></script> --}}

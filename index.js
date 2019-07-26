@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
@@ -9,6 +10,7 @@ const db = require('./models');
 const PORT = process.env.PORT || 3030;
 const apiRoutes = require('./routes/api/api-routes');
 const htmlRoutes = require('./routes/view/html-routes');
+
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -20,6 +22,15 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// --------- CORS config
+
+app.use(function (req, res, next) {
+    
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.send(fs.readFileSync('./ssRender/maintenance.html', 'utf8'));
+    next();
+});
 
 app.use(apiRoutes);
 app.use(htmlRoutes);
