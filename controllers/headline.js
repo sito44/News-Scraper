@@ -2,6 +2,7 @@ const HeadlineModel = require('../models/Headline');
 
 exports.scrapeNews = function (req, res) {
   HeadlineModel.schema.statics.scrape(function (response) {
+    console.log(response);
     res.json(response);
   });
 
