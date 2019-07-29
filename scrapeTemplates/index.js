@@ -1,3 +1,4 @@
 module.exports = {
-    naturalNews: require('./naturalNews.js')
+    naturalNews: require('./naturalNews.js'),
+    zeroHedge: require('./zeroHedge.js')
 }
