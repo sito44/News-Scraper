@@ -50,7 +50,8 @@ const headlineSchema = new Schema({
 headlineSchema.statics.scrape = function (callback) {
 
     Promise.all([
-        scrapeTemplates.naturalNews()
+        scrapeTemplates.naturalNews(),
+        scrapeTemplates.zeroHedge()
     ])
     .then(data => {
         callback(data);
