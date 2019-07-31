@@ -2,14 +2,12 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 
 module.exports = async function () {
-    const hostName = 'https://themindunleashed.com/';
-    const result = await rp(hostName)
+    const hostName = 'themindunleashed';
+    const result = await rp(`https://${hostName}.com/`)
         .then(html => {
             let data = [];
             const $ = cheerio.load(html);
             $("div.article-card").each(function (i, element) {
-                // Save the text and href of each link enclosed in the current element
-                
                 
                 let title = $(element).children("h3").children("a").text();
                 let imagePath = $(element).children().first().next().children("div").children("img").attr("data-cfsrc");
@@ -17,6 +15,7 @@ module.exports = async function () {
                 let link = $(element).children("a").attr("href");
 
                 let articleData = {
+                    domain: hostName,
                     title: title,
                     imageUrl: imagePath,
                     description: description,

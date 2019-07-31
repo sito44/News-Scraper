@@ -2,13 +2,13 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 
 module.exports = async function() {
-    const hostName = 'https://www.naturalnews.com/';
-    const result = await rp(hostName)
+    const hostName = 'naturalnews';
+    const result = await rp(`https://www.${hostName}.com/`)
     .then(html => {
         let data = [];
         const $ = cheerio.load(html);
         $("div.IFB").each(function (i, element) {
-            // Save the text and href of each link enclosed in the current element
+            
             let date = $(element).children("div.IFA").children("time.entry-time").text();
             let title = $(element).children("div.IFH").children("a").text();
             let author = $(element).children("div.IFA").children("span.entry-author").children("a").children().text();
@@ -18,6 +18,7 @@ module.exports = async function() {
             let imageUrl = hostName + imagePath;
 
             let articleData = {
+                domain: hostName,
                 date: date,
                 title: title,
                 author: author,
