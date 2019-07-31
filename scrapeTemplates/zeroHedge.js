@@ -2,13 +2,13 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 
 module.exports = async function() {
-const hostName = 'https://www.zerohedge.com/';
-const result = await rp(hostName)
+const hostName = 'zerohedge';
+const result = await rp(`https://www.${hostName}.com/`)
     .then(html => {
         let data = [];
         const $ = cheerio.load(html);
         $("div.views-row").each(function (i, element) {
-            // Save the text and href of each link enclosed in the current element
+            
             let date = $(element).children("article").children("footer").children("ul").children("li.extras__created").children("span").text();
             let title = $(element).children("article").children("h2").children("a").children("span").text();
             let imagePath = $(element).children("article").children("section").children("div.teaser-image").children("div").children("a").children("picture").children("img").attr("src");
@@ -17,6 +17,7 @@ const result = await rp(hostName)
             let link = hostName + linkUrl;
 
             let articleData = {
+                domain: hostName,
                 date: date,
                 title: title,
                 author: 'zerohedge',
