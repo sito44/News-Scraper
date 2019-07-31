@@ -51,7 +51,8 @@ headlineSchema.statics.scrape = function (callback) {
 
     Promise.all([
         scrapeTemplates.naturalNews(),
-        scrapeTemplates.zeroHedge()
+        scrapeTemplates.zeroHedge(),
+        scrapeTemplates.theMindUnleashed()
     ])
     .then(data => {
         callback(data);
