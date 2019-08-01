@@ -16,7 +16,7 @@ module.exports = async function () {
 
                 let articleData = {
                     domain: hostName,
-                    title: title,
+                    title: title.slice(1),
                     imageUrl: imagePath,
                     description: description,
                     link: link
