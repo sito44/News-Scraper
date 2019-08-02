@@ -18,7 +18,7 @@ module.exports = async function () {
                     domain: hostName,
                     title: title.slice(1),
                     imageUrl: imagePath,
-                    description: description,
+                    description: description.slice(1),
                     link: link
                 };
                 

@@ -3,7 +3,8 @@ const cheerio = require('cheerio');
 
 module.exports = async function() {
 const hostName = 'zerohedge';
-const result = await rp(`https://www.${hostName}.com/`)
+const webAddress = `https://www.${hostName}.com/`;
+const result = await rp(webAddress)
     .then(html => {
         let data = [];
         const $ = cheerio.load(html);
@@ -14,7 +15,8 @@ const result = await rp(`https://www.${hostName}.com/`)
             let imagePath = $(element).children("article").children("section").children("div.teaser-image").children("div").children("a").children("picture").children("img").attr("src");
             let description = $(element).children("article").find("section").children("div.teaser-text").children("div").children("p").text();
             let linkUrl = $(element).children("article").children("h2").children("a").attr("href");
-            let link = hostName + linkUrl;
+            let link = webAddress + linkUrl.slice(1);
+            
 
             let articleData = {
                 domain: hostName,
