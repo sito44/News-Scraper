@@ -3,7 +3,8 @@ const cheerio = require('cheerio');
 
 module.exports = async function() {
     const hostName = 'naturalnews';
-    const result = await rp(`https://www.${hostName}.com/`)
+    const webAddress = `https://www.${hostName}.com/`;
+    const result = await rp(webAddress)
     .then(html => {
         let data = [];
         const $ = cheerio.load(html);
@@ -15,7 +16,7 @@ module.exports = async function() {
             let imagePath = $(element).children("div.IFP").children("a").children().attr("src");
             let description = $(element).children("div.IFD").find("p").text();
             let link = $(element).children("div.IFH").children("a").attr("href");
-            let imageUrl = hostName + imagePath;
+            let imageUrl = webAddress + imagePath;
 
             let articleData = {
                 domain: hostName,
