@@ -55,7 +55,8 @@ headlineSchema.statics.scrape = function (callback) {
         scrapeTemplates.theMindUnleashed(),
         scrapeTemplates.newAtlas(),
         scrapeTemplates.scienceAlert(),
-        scrapeTemplates.consciousLifestyleMag()
+        scrapeTemplates.consciousLifestyleMag(),
+        scrapeTemplates.snlsNetwork()
     ])
     .then(data => {
         callback(data);
