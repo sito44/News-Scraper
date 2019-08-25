@@ -4,5 +4,6 @@ module.exports = {
     theMindUnleashed: require('./theMindUnleashed.js'),
     newAtlas: require('./newAtlas.js'),
     scienceAlert: require('./scienceAlert.js'),
-    consciousLifestyleMag: require('./consciouslifestylemag.js')
+    consciousLifestyleMag: require('./consciouslifestylemag.js'),
+    snlsNetwork: require('./snlsNetwork.js')
 }
