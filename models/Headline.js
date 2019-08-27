@@ -50,11 +50,11 @@ const headlineSchema = new Schema({
 headlineSchema.statics.scrape = function (callback) {
 
     Promise.all([
-        scrapeTemplates.naturalNews(),
-        scrapeTemplates.zeroHedge(),
-        scrapeTemplates.theMindUnleashed(),
         scrapeTemplates.newAtlas(),
         scrapeTemplates.scienceAlert(),
+        scrapeTemplates.zeroHedge(),
+        scrapeTemplates.naturalNews(),
+        scrapeTemplates.theMindUnleashed(),
         scrapeTemplates.consciousLifestyleMag(),
         scrapeTemplates.snlsNetwork()
     ])

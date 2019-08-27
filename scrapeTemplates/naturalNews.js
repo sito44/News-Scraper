@@ -22,6 +22,7 @@ module.exports = async function() {
                 domain: hostName,
                 date: date,
                 title: title,
+                category: "Health | Politics",
                 author: author,
                 imageUrl: imageUrl,
                 description: description,
