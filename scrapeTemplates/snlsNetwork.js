@@ -38,7 +38,6 @@ module.exports = async function () {
                 
 
                 let linkData = {
-                    domain: hostName,
                     date1: date1,
                     title1: title1,
                     link1: link1,
