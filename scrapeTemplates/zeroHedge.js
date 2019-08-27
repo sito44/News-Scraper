@@ -23,6 +23,7 @@ const result = await rp(webAddress)
                 date: date,
                 title: title,
                 author: 'zerohedge',
+                category: 'Geopolitics | Finance',
                 imageUrl: imagePath,
                 description: description,
                 link:link
